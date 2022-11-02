@@ -38,4 +38,13 @@ class ArtistExhibitionRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function findByArtworkId(int $artworkId): array
+    {
+        $qb = $this->query->createQueryBuilder();
+
+        $this->query->filterArtworkId($qb, $artworkId);
+
+        return $qb->getQuery()->getResult();
+    }
 }
